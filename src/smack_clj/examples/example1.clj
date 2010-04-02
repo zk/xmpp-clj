@@ -4,27 +4,28 @@
 ;; Simple jabber bot that responds with the message that was sent
 
 ;; Connection Info
-(def ci {:username "testclojurebot@gmail.com"
+(def connect-info {:username "testclojurebot@gmail.com"
 	 :password "clojurebot12345"
 	 :host "talk.google.com"
 	 :domain "gmail.com"
 	 })
 
-(defn handle-message [from-message]
-  (let [body (:body from-message)
-	from-user (:from from-message)]
-    (str "Hello " body " " from-user)))
+(defn handle-message [message]
+  (let [body (:body message)
+	from-user (:from-name message)]
+    (str "Hi " from-user ", you sent me " body)
+    nil))
 
 (defn reload-helper [message] 
   (try 
-   (handle-message conn message)
+   (handle-message message)
    (catch Exception e (println e))))
 
-(defonce x (smack/jabberbot ci reload-helper))
+(defonce x (smack/jabberbot connect-info reload-helper))
 
 (defn reload []
   (.disconnect x)
-  (def x (smack/jabberbot ci reload-helper)))
+  (def x (smack/jabberbot connect-info reload-helper)))
 
 (reload)
 

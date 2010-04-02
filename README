@@ -1,10 +1,13 @@
 # smack-clj
 
-FIXME: write description
+Smack-clj is a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
+Smack-clj allows you to write simple jabber bots in idiomatic clojure.
 
 ## Usage
 
-FIXME: write
+
+
+See the src/smack_clj/examples directory for more useage examples.
 
 ## Installation
 

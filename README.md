@@ -4,13 +4,13 @@ xmpp-clj allows you to write simple jabber bots in idiomatic clojure by providin
 
 ## Usage
 Create a temporary jabber account for your bot.  I've used gmail here, but there are a bunch of free providers
-  
+<br />  
   
 Create a leiningen project and cd into the project directory
 
     lein new mybot
     cd ./mybot
-  
+<br />  
   
 Add xmpp-clj to your deps (project.clj):
 
@@ -21,8 +21,7 @@ Add xmpp-clj to your deps (project.clj):
                      [org.clojure/clojure-contrib "1.1.0"]
                      [xmpp-clj "0.1.0"]]
       :dev-dependencies [[leiningen/lein-swank "1.2.0-SNAPSHOT"]])
-  
-  
+<br />
   
 Open up src/mybot/core.clj and require the xmpp lib:
 
@@ -37,6 +36,7 @@ Define your connection params:
                        :password "clojurebot12345"
                        :host "talk.google.com"
                        :domain "gmail.com"})
+<br />
 		       
 Add some logic, all this bot does is respond back to the sender with his/her message:
     
@@ -50,17 +50,18 @@ Add some logic, all this bot does is respond back to the sender with his/her mes
     ;; reload-helper allows you see changes to handle-message without restarting the bot.
     (defn reload-helper [message] 
         (handle-message message))
+<br />
 
 Define the bot
 
     (defonce x (xmpp/bot connect-info reload-helper))
-
+<br />
     
 Next, fire up your chat client, add your new buddy, and send him a message.  The response should look someting like this:
 
 me: hello chatbot
 chatbot: Hi zachary.kim@gmail.com, you sent me hello chatbot
-
+<br />  
 
 
 See the src/smack_clj/examples directory for more useage examples.

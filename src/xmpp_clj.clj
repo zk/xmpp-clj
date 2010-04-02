@@ -71,10 +71,10 @@
      (let [resp (handler message)]
        (reply message resp conn)))))
 
-(defn bot
-  "Defines an instant messaging bot that will respond to incoming messages. 
-   jabberbot takes 2 parameters, the first is a map representing the data 
-   needed to make a connection to the jabber server:
+(defn start-bot
+  "Defines and starts an instant messaging bot that will respond to incoming
+   messages. start-bot takes 2 parameters, the first is a map representing 
+   the data needed to make a connection to the jabber server:
    
    connnect-info example:
    {:host \"talk.google.com\"
@@ -111,6 +111,9 @@
     (.sendPacket conn *available-presence*)
     (.addPacketListener conn (packet-listener conn (with-message-map (wrap-responder packet-processor))) *chat-message-type-filter*)
     conn))
+
+(defn stop-bot [#^XMPPConnection conn]
+  (.disconnect conn))
 
 
 

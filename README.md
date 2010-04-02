@@ -44,7 +44,7 @@ Add some logic, all this bot does is respond back to the sender with his/her mes
     (defn handle-message [message]
       (let [body (:body message)
             from-user (:from-name message)]
-        (str "Hi " from-user ", you sent me " body)))
+        (str "Hi " from-user ", you sent me '" body "'")))
 
 
     ;; reload-helper allows you see changes to handle-message without restarting the bot.
@@ -54,7 +54,12 @@ Add some logic, all this bot does is respond back to the sender with his/her mes
 
 Define the bot
 
-    (defonce x (xmpp/bot connect-info reload-helper))
+    (defonce my-bot (xmpp/start-bot connect-info reload-helper))
+<br />    
+
+You can also stop the bot by using stop-bot
+
+    (xmpp/stop-bot my-bot)
 <br />
     
 Next, fire up your chat client, add your new buddy, and send him a message.  The response should look someting like this:
@@ -65,6 +70,10 @@ chatbot: Hi zachary.kim@gmail.com, you sent me hello chatbot
 
 
 See the src/smack_clj/examples directory for more useage examples.
+
+## Problems?
+
+Open up an [issue](http://github.com/zkim/xmpp-clj/issues)
 
 ## License
 

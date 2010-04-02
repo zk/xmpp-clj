@@ -1,12 +1,12 @@
-# smack-clj
+# jabber-clj
 
-Smack-clj allows you to write simple jabber bots in idiomatic clojure by providing a lightweight wrapper around the http://www.igniterealtime.org/projects/smack/ library.
+Jabber-clj allows you to write simple jabber bots in idiomatic clojure by providing a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
 
 ## Usage
 
 
     (ns smack_clj.examples.example1
-      (:require [smack-clj :as jabber]))
+      (:require [jabber-clj :as jabber]))
   
     ;; Simple jabber bot that responds with the message that was sent
 
@@ -31,21 +31,17 @@ Smack-clj allows you to write simple jabber bots in idiomatic clojure by providi
         (handle-message message)
         (catch Exception e (println e))))
 
-    (defonce x (jabber/jabber-bot connect-info reload-helper))
+    (defonce x (jabber/bot connect-info reload-helper))
 
     (defn reload []
       (.disconnect x)
-      (def x (jabber/jabber-bot connect-info reload-helper)))
+      (def x (jabber/bot connect-info reload-helper)))
 
     (reload)
 
 
 See the src/smack_clj/examples directory for more useage examples.
 
-## Installation
-
-FIXME: write
-
 ## License
 
-FIXME: write
+[Eclipse Public License v1.0](http://www.eclipse.org/legal/epl-v10.html)

@@ -69,7 +69,7 @@ Next, fire up your chat client, add your new buddy, and send him a message.  The
 
 > me: hello chatbot  
 
-> chatbot: Hi zachary.kim@gmail.com, you sent me hello chatbot
+> chatbot: Hi zachary.kim@gmail.com, you sent me 'hello chatbot'
 <br />  
 
 

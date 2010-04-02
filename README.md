@@ -6,7 +6,7 @@ Smack-clj allows you to write simple jabber bots in idiomatic clojure by providi
 
 
     (ns smack_clj.examples.example1
-      (:require [smack-clj :as smack]))
+      (:require [smack-clj :as jabber]))
   
     ;; Simple jabber bot that responds with the message that was sent
 
@@ -31,11 +31,11 @@ Smack-clj allows you to write simple jabber bots in idiomatic clojure by providi
         (handle-message message)
         (catch Exception e (println e))))
 
-    (defonce x (smack/jabber-bot connect-info reload-helper))
+    (defonce x (jabber/jabber-bot connect-info reload-helper))
 
     (defn reload []
       (.disconnect x)
-      (def x (smack/jabber-bot connect-info reload-helper)))
+      (def x (jabber/jabber-bot connect-info reload-helper)))
 
     (reload)
 

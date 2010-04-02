@@ -47,11 +47,9 @@
    (catch Exception e (println e) from)))
 
 (defn create-reply [from-message-map to-message-body]
-  (println (str "params " from-message-map " " to-message-body))
   (try
    (let [to (:from from-message-map)
 	 rep (Message.)]
-     (println (str "MESSAGE: " to " " rep))
      (.setTo rep to)
      (.setBody rep (str to-message-body))
      rep)

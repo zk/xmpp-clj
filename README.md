@@ -1,12 +1,11 @@
-# jabber-clj
+# xmpp-clj
 
-Jabber-clj allows you to write simple jabber bots in idiomatic clojure by providing a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
+xmpp-clj allows you to write simple jabber bots in idiomatic clojure by providing a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
 
 ## Usage
 
-
-    (ns smack_clj.examples.example1
-      (:require [jabber-clj :as jabber]))
+    (ns xmpp_clj.examples.example1
+      (:require [xmpp-clj :as xmpp]))
   
     ;; Simple jabber bot that responds with the message that was sent
 
@@ -31,11 +30,11 @@ Jabber-clj allows you to write simple jabber bots in idiomatic clojure by provid
         (handle-message message)
         (catch Exception e (println e))))
 
-    (defonce x (jabber/bot connect-info reload-helper))
+    (defonce x (xmpp/bot connect-info reload-helper))
 
     (defn reload []
       (.disconnect x)
-      (def x (jabber/bot connect-info reload-helper)))
+      (def x (xmpp/bot connect-info reload-helper)))
 
     (reload)
 

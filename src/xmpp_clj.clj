@@ -1,4 +1,4 @@
-(ns smack-clj
+(ns xmpp-clj
   (:import [org.jivesoftware.smack 
 	    Chat 
 	    ChatManager 
@@ -71,7 +71,7 @@
      (let [resp (handler message)]
        (reply message resp conn)))))
 
-(defn jabber-bot
+(defn bot
   "Defines an instant messaging bot that will respond to incoming messages. 
    jabberbot takes 2 parameters, the first is a map representing the data 
    needed to make a connection to the jabber server:

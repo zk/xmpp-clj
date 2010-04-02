@@ -1,14 +1,14 @@
-(ns smack_clj.examples.example1
-  (:require [smack-clj :as smack]))
+(ns xmpp_clj.examples.example1
+  (:require [xmpp-clj :as xmpp]))
 
 ;; Simple jabber bot that responds with the message that was sent
 
 ;; Connection Info
 (def connect-info {:username "testclojurebot@gmail.com"
-	 :password "clojurebot12345"
-	 :host "talk.google.com"
-	 :domain "gmail.com"
-	 })
+		   :password "clojurebot12345"
+		   :host "talk.google.com"
+		   :domain "gmail.com"
+		   })
 
 
 ;; Important stuff
@@ -24,11 +24,11 @@
    (handle-message message)
    (catch Exception e (println e))))
 
-(defonce x (smack/jabber-bot connect-info reload-helper))
+(defonce x (xmpp/bot connect-info reload-helper))
 
 (defn reload []
   (.disconnect x)
-  (def x (smack/jabber-bot connect-info reload-helper)))
+  (def x (xmpp/bot connect-info reload-helper)))
 
 (reload)
 

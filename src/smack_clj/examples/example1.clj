@@ -10,22 +10,25 @@
 	 :domain "gmail.com"
 	 })
 
+
+;; Important stuff
 (defn handle-message [message]
   (let [body (:body message)
 	from-user (:from-name message)]
-    (str "Hi " from-user ", you sent me " body)
-    nil))
+    (str "Hi " from-user ", you sent me " body)))
 
+
+;; Don't have to reload the bot every change
 (defn reload-helper [message] 
   (try 
    (handle-message message)
    (catch Exception e (println e))))
 
-(defonce x (smack/jabberbot connect-info reload-helper))
+(defonce x (smack/jabber-bot connect-info reload-helper))
 
 (defn reload []
   (.disconnect x)
-  (def x (smack/jabberbot connect-info reload-helper)))
+  (def x (smack/jabber-bot connect-info reload-helper)))
 
 (reload)
 

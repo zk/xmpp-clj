@@ -71,7 +71,35 @@
      (let [resp (handler message)]
        (reply message resp conn)))))
 
-(defn jabberbot [connect-info packet-processor]
+(defn jabber-bot
+  "Defines an instant messaging bot that will respond to incoming messages. 
+   jabberbot takes 2 parameters, the first is a map representing the data 
+   needed to make a connection to the jabber server:
+   
+   connnect-info example:
+   {:host \"talk.google.com\"
+    :domain \"gmail.com\"
+    :username \"testclojurebot@gmail.com\"
+    :password \"clojurebot12345\"}
+
+   The second parameter is the function that does the heavy-lifting.  It is
+   a function that takes a map representing a received message, and must
+   return either a string, which will be sent back to the user as the
+   response, or nil, where nothing will be sent back to the user.
+
+   received message map example (nils are possible where n/a):
+   {:body
+    :subject
+    :thread <Id used to correlate several messages, such as a converation>
+    :from <entire from id, ex. zachary.kim@gmail.com/Zachary KiE0124793>
+    :from-name <Just the 'name' from the 'from', ex. zachary.kim@gmail.com>
+    :to <To whom the message was sent, i.e. this bot>
+    :packet-id <donno>
+    :error <a map representing the error, if present>
+    :type <Type of message: normal, chat, group_chat, headline, error.
+           see javadoc for org.jivesoftware.smack.packet.Message>}
+   "
+  [connect-info packet-processor]
   (let [un (:username connect-info)
 	pw (:password connect-info)
 	host (:host connect-info)

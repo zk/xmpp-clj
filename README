@@ -1,7 +1,6 @@
 # smack-clj
 
-Smack-clj is a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
-Smack-clj allows you to write simple jabber bots in idiomatic clojure.
+Smack-clj allows you to write simple jabber bots in idiomatic clojure by providing a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
 
 ## Usage
 

@@ -67,9 +67,9 @@ You can also stop the bot by using stop-bot
     
 Next, fire up your chat client, add your new buddy, and send him a message.  The response should look someting like this:
 
-me: hello chatbot  
+> me: hello chatbot  
 
-chatbot: Hi zachary.kim@gmail.com, you sent me hello chatbot
+> chatbot: Hi zachary.kim@gmail.com, you sent me hello chatbot
 <br />  
 
 

@@ -1,0 +1,1 @@
+(ns smack-clj.core)

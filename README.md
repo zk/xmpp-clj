@@ -64,7 +64,7 @@ chatbot: Hi zachary.kim@gmail.com, you sent me hello chatbot
 <br />  
 
 
-See the src/smack_clj/examples directory for more useage examples.
+See the src/smack_clj/examples directory for more usage examples.
 
 ## License
 

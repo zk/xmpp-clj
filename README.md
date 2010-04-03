@@ -2,6 +2,9 @@
 
 xmpp-clj allows you to write simple jabber bots in idiomatic clojure by providing a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
 
+## Lein
+    [xmpp-clj "0.1.0"]
+
 ## Usage
 Create a temporary jabber account for your bot.  I've used gmail here, but there are a bunch of free providers
 <br />  
@@ -44,7 +47,7 @@ Add some logic, all this bot does is respond back to the sender with his/her mes
     (defn handle-message [message]
       (let [body (:body message)
             from-user (:from-name message)]
-        (str "Hi " from-user ", you sent me " body)))
+        (str "Hi " from-user ", you sent me '" body "'")))
 
 
     ;; reload-helper allows you see changes to handle-message without restarting the bot.
@@ -54,17 +57,27 @@ Add some logic, all this bot does is respond back to the sender with his/her mes
 
 Define the bot
 
-    (defonce x (xmpp/bot connect-info reload-helper))
+    (defonce my-bot (xmpp/start-bot connect-info reload-helper))
+<br />    
+
+You can also stop the bot by using stop-bot
+
+    (xmpp/stop-bot my-bot)
 <br />
     
 Next, fire up your chat client, add your new buddy, and send him a message.  The response should look someting like this:
 
-me: hello chatbot
-chatbot: Hi zachary.kim@gmail.com, you sent me hello chatbot
+> me: hello chatbot  
+
+> chatbot: Hi zachary.kim@gmail.com, you sent me 'hello chatbot'
 <br />  
 
 
 See the src/smack_clj/examples directory for more usage examples.
+
+## Problems?
+
+Open up an [issue](http://github.com/zkim/xmpp-clj/issues)
 
 ## License
 

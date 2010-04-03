@@ -15,7 +15,7 @@
 (defn handle-message [message]
   (let [body (:body message)
 	from-user (:from-name message)]
-    (str "Hi " from-user ", you sent me " body)))
+    (str "Hi " from-user ", you sent me '" body "'")))
 
 
 ;; Don't have to reload the bot every change
@@ -24,11 +24,11 @@
    (handle-message message)
    (catch Exception e (println e))))
 
-(defonce x (xmpp/bot connect-info reload-helper))
+(defonce my-bot (xmpp/start-bot connect-info reload-helper))
 
 (defn reload []
-  (.disconnect x)
-  (def x (xmpp/bot connect-info reload-helper)))
+  (xmpp/stop-bot my-bot)
+  (def my-bot (xmpp/start-bot connect-info reload-helper)))
 
 (reload)
 

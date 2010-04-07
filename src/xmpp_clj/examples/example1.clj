@@ -17,7 +17,6 @@
 	from-user (:from-name message)]
     (str "Hi " from-user ", you sent me '" body "'")))
 
-
 ;; Don't have to reload the bot every change
 (defn reload-helper [message] 
   (try 

@@ -72,9 +72,6 @@ Next, fire up your chat client, add your new buddy, and send him a message.  The
 > chatbot: Hi zachary.kim@gmail.com, you sent me 'hello chatbot'
 <br />  
 
-
-See the src/smack_clj/examples directory for more usage examples.
-
 ## Problems?
 
 Open up an [issue](http://github.com/zkim/xmpp-clj/issues)

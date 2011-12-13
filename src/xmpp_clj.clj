@@ -12,15 +12,15 @@
 	   [org.jivesoftware.smack.filter MessageTypeFilter]
 	   [org.jivesoftware.smack.util StringUtils]))
 
-(defonce *available-presence* (Presence. Presence$Type/available))
+(def available-presence (Presence. Presence$Type/available))
 
-(defonce *chat-message-type-filter* (MessageTypeFilter. Message$Type/chat))
+(def chat-message-type-filter (MessageTypeFilter. Message$Type/chat))
 
 (defn packet-listener [conn processor]
-     (proxy 
-	 [PacketListener] 
-	 []
-       (processPacket [packet] (processor conn packet))))
+  (proxy 
+      [PacketListener] 
+      []
+    (processPacket [packet] (processor conn packet))))
 
 
 (defn mapify-error [e]
@@ -82,10 +82,10 @@
     :username \"testclojurebot@gmail.com\"
     :password \"clojurebot12345\"}
 
-   The second parameter is the function that does the heavy-lifting.  It is
-   a function that takes a map representing a received message, and must
-   return either a string, which will be sent back to the user as the
-   response, or nil, where nothing will be sent back to the user.
+   The second parameter expects a single-arg function, which is passed
+   a map representing a message on receive. Return a string from this
+   function to pass a message back to the sender, or nil for no
+   response
 
    received message map example (nils are possible where n/a):
    {:body
@@ -108,8 +108,8 @@
 	conn (XMPPConnection. connect-config)]
     (.connect conn)
     (.login conn un pw)
-    (.sendPacket conn *available-presence*)
-    (.addPacketListener conn (packet-listener conn (with-message-map (wrap-responder packet-processor))) *chat-message-type-filter*)
+    (.sendPacket conn available-presence)
+    (.addPacketListener conn (packet-listener conn (with-message-map (wrap-responder packet-processor))) chat-message-type-filter)
     conn))
 
 (defn stop-bot [#^XMPPConnection conn]

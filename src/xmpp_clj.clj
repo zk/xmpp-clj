@@ -22,7 +22,6 @@
       []
     (processPacket [packet] (processor conn packet))))
 
-
 (defn mapify-error [e]
   (if (nil? e) 
     nil
@@ -67,9 +66,8 @@
 
 (defn wrap-responder [handler]
   (fn [conn message]
-    (try
-     (let [resp (handler message)]
-       (reply message resp conn)))))
+    (let [resp (handler message)]
+      (reply message resp conn))))
 
 (defn start-bot
   "Defines and starts an instant messaging bot that will respond to incoming
@@ -109,11 +107,12 @@
     (.connect conn)
     (.login conn un pw)
     (.sendPacket conn available-presence)
-    (.addPacketListener conn (packet-listener conn (with-message-map (wrap-responder packet-processor))) chat-message-type-filter)
+    (.addPacketListener
+     conn
+     (packet-listener conn (with-message-map (wrap-responder packet-processor)))
+     chat-message-type-filter)
     conn))
 
 (defn stop-bot [#^XMPPConnection conn]
   (.disconnect conn))
-
-
 

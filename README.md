@@ -49,16 +49,13 @@ Add some logic, all this bot does is respond back to the sender with his/her mes
             from-user (:from-name message)]
         (str "Hi " from-user ", you sent me '" body "'")))
 
-
-    ;; reload-helper allows you see changes to handle-message without restarting the bot.
-    (defn reload-helper [message] 
-        (handle-message message))
 <br />
 
-Define the bot
+Define the bot:
 
-    (defonce my-bot (xmpp/start-bot connect-info reload-helper))
-<br />    
+    (defonce my-bot (xmpp/start-bot connect-info (var handle-message)))
+
+<br />
 
 Stop the bot
 

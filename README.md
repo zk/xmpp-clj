@@ -3,7 +3,7 @@
 xmpp-clj allows you to write simple jabber bots in idiomatic clojure by providing a lightweight wrapper around the [smack](http://www.igniterealtime.org/projects/smack/) library.
 
 ## Lein
-    [xmpp-clj "0.2.0"]
+    [xmpp-clj "0.2.1"]
 
 ## Usage
 Create a temporary jabber account for your bot.  I've used gmail here, but there are a bunch of free providers

@@ -102,7 +102,8 @@
 	pw (:password connect-info)
 	host (:host connect-info)
 	domain (:domain connect-info)
-	connect-config (ConnectionConfiguration. host 5222 domain)
+        port (get connect-info :port 5222)
+	connect-config (ConnectionConfiguration. host port domain)
 	conn (XMPPConnection. connect-config)]
     (.connect conn)
     (.login conn un pw)
@@ -115,4 +116,3 @@
 
 (defn stop-bot [#^XMPPConnection conn]
   (.disconnect conn))
-

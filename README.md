@@ -42,7 +42,16 @@ example:
                     :password "clojurebot12345"
                     :host "talk.google.com"
                     :domain "gmail.com"
-                    :handler (var handle-message))
+                    :handler (fn [m] "Ermahgerd!!!")
+
+Next, fire up your chat client, add your new bot buddy, and send him /
+her a message.  The response should look someting like this:
+
+> me: hello chatbot  
+
+> chatbot: Ermahgerd!!!
+
+<br />
 
     ;; Stop the bot when you're done:
 
@@ -73,11 +82,6 @@ example:
                     :username ...)
 
 
-Next, fire up your chat client, add your new buddy, and send him a message.  The response should look someting like this:
-
-> me: hello chatbot  
-
-> chatbot: Ermahgerd
 
 See the `src/xmpp_clj/examples` folder for additional examples. If
 you'd like to manually manage connections, see the `xmpp-clj.bot`

@@ -4,7 +4,7 @@ xmpp-clj allows you to write simple jabber bots in idiomatic clojure by providin
 
 ## Lein
 
-    [xmpp-clj "0.3.0"]
+    [xmpp-clj "0.3.1"]
 
 
 ## Usage
@@ -22,7 +22,7 @@ Add xmpp-clj to your deps (project.clj):
 
     (defproject mybot "0.1.0"
       :description "FIXME: write"
-      :dependencies [[xmpp-clj "0.3.0"]])
+      :dependencies [[xmpp-clj "0.3.1"]])
 <br />
   
 Open up src/mybot/core.clj and require the xmpp lib:

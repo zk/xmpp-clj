@@ -103,7 +103,13 @@
     (if-not (and un pw host domain)
       (throw (Exception. "Required connection params not provided (:username :password :host :domain)")))
     (.connect conn)
-    (.login conn un pw)
+    (try
+      (.login conn un pw)
+      (catch XMPPException e
+        (throw (Exception. (str "Couldn't log in with user's credentials: "
+                                un
+                                " / "
+                                (apply str (take (count pw) (repeat "*"))))))))
     (.sendPacket conn available-presence)
     (.addPacketListener
      conn

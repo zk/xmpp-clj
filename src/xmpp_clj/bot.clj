@@ -154,7 +154,8 @@
     (let [conn (connect connect-info)
           muc (MultiUserChat. conn room)]
       (.join muc nick nil no-history muc-join-timeout-ms)
-      (add-listener conn packet-processor groupchat-message-type-filter :from-name))))
+      (add-listener conn packet-processor groupchat-message-type-filter :from-name)
+      conn)))
 
 
 (defn stop [#^XMPPConnection conn]

@@ -41,13 +41,13 @@
     :packet-id (.getPacketID m)
     :error (error->map (.getError m))
     :type (.getType m)}
-   (catch Exception e (println e) {})))
+   (catch Exception e (println (str "In message->map: " e)) {})))
 
 
 (defn parse-address [from]
   (try
    (first (.split from "/"))
-   (catch Exception e (println e) from)))
+   (catch Exception e (println (str "In parse-address " from " : " e)) from)))
 
 (defn create-reply [from-message-map to-message-body field]
   (try
@@ -57,7 +57,7 @@
      (.setBody rep (str to-message-body))
      (.setType rep (:type from-message-map))
      rep)
-   (catch Exception e (println e))))
+   (catch Exception e (println (str "In create-reply: " e)))))
 
 
 (defn reply [from-message-map to-message-body conn reply-address-field]
@@ -68,7 +68,7 @@
     (let [message (message->map #^Message packet)]
       (try
        (handler conn message)
-       (catch Exception e (println e))))))
+       (catch Exception e (println (str "In with-message-map: " e)))))))
 
 (defn wrap-responder [handler reply-address-field]
   (fn [conn message]

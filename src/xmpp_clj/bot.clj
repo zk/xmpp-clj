@@ -43,6 +43,29 @@
     :type (.getType m)}
    (catch Exception e (println (str "In message->map: " e)) {})))
 
+(defn notify-generic [conn msg-map type]
+  (let [mgr (.getChatManager conn)
+        chat (.createChat mgr (:to msg-map) nil)
+        msg (Message. (:to msg-map) type)]
+    (.setBody msg (:body msg-map))
+    (.sendMessage chat msg))
+)
+
+; Use this function to send a one-off notification to a user when you
+; don't expect a message back.
+(defn notify-one [conn msg-map]
+  (let [mgr (.getChatManager conn)
+        chat (.createChat mgr (:to msg-map) nil)
+        msg (Message. (:to msg-map) Message$Type/chat)]
+    (.setBody msg (:body msg-map))
+    (.sendMessage chat msg)))
+
+; Use this function to send a one-off notification to a MUC when you
+; don't expect a message back
+(defn notify-muc [conn msg-map]
+  (let [chatroom (MultiUserChat. conn (:to msg-map))]
+   (.sendMessage chatroom (:body msg-map))))
+
 
 (defn parse-address [from]
   (try

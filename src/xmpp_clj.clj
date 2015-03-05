@@ -6,7 +6,7 @@
 (defn stop-bot [& [name]]
   (bot/stop (or name :default)))
 
-(defn start-bot [& opts]
+(defn start-bot-with [starter opts]
   (let [opts (merge {:name :default}
                     (apply hash-map opts))
         name (:name opts)]
@@ -14,6 +14,14 @@
      bots
      (fn [bots]
        (bot/stop (get bots name))
-       (assoc bots name (bot/start opts (get opts :handler (fn [m]))))))))
+       (assoc bots name (starter opts (get opts :handler (fn [m]))))))))
+
+(defn start-bot [& opts]
+  (start-bot-with bot/start opts))
+
+(defn start-bot-muc [& opts]
+  (start-bot-with bot/start-muc opts))
+
+
 
 (def restart-bot start-bot)
